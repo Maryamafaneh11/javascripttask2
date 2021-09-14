@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login</title>
+        
+        <link href="loginstyle.css" rel="stylesheet" type="text/css" />
+       
+       <script type="text/javascript">
+        function login(){
+           
+       var x= document.getElementById("txtUsername").value;
+       
+       var y=document.getElementById("txtPassword").value;  
+        if(x=="" || y==""){
+            document.getElementById("showmsg").style.display="block";
+        }
+        else{
+         // document.getElementsByClassName("header");
+       var n=  document.location .href="file:///C:/Users/User/Desktop/task2js/JavaScript-Task-2/Template/home.html";
+     
+    }
+
+        }
+        
+        
+        
+        </script>
+
+    </head>
+    <body>
+
+        <div class="box">
+            <h2>Login</h2>
+            <form>
+                <div class="inputBox">
+                    <label>Username</label>
+    
+                    <input type="text" id="txtUsername" />
+                </div>
+                <div class="inputBox">
+                    <label>Password</label>
+    
+                    <input type="password" id="txtPassword" />
+                </div>
+                <input type="button" value="Sign In" onclick="login()" />
+            </form>
+            <div class="hideBox" id="showmsg">
+                <label>Please Enter Username & Password</label>
+                <img src="C:\Users\User\Downloads\Close.png" width="20"  />
+            </div>
+        </div>
+
+    </body>
+</html>

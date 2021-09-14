@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link href="Styles.css" rel="stylesheet" />
+      <script type="text/javascript">
+       function addshop(info){
+           
+     var tab= document.getElementById("DivShoppingList").style.display="block";
+     var table1=document.getElementById("tableItems");
+     var tr1=document.createElement("tr");
+     var td1=document.createElement("td");
+     var td2=document.createElement("td");
+     var td3=document.createElement("td");
+     var td4=document.createElement("td");
+
+     var d=info.parentNode.parentNode.parentNode.parentNode;
+
+     var distax=d.getElementsByClassName("xyz")[0].innerText;
+     tr1.setAttribute("class",distax);
+    
+    
+
+     
+
+     tr1.appendChild(td1);
+     tr1.appendChild(td2);
+     tr1.appendChild(td3);
+     tr1.appendChild(td4);
+     
+    
+      
+     var chec=document.createElement("input");
+     chec.setAttribute("type","checkbox");
+     td1.appendChild(chec);
+
+    
+
+    
+
+    var div1=info.parentNode.parentNode.parentNode.parentNode;
+     var img=div1.getElementsByClassName("mainimgItem")[0].src;
+     var imgg=document.createElement("img");
+     imgg.setAttribute('src',img);
+     imgg.setAttribute("width","50px")
+     td2.appendChild(imgg);
+
+     var tittl=div1.getElementsByClassName("headerItem")[0].innerText;
+     td3.innerText=tittl;
+
+     var tax=div1.getElementsByClassName("headerpriceItem")[0].innerText;
+     td4.innerText=tax;
+
+     
+     table1.appendChild(tr1);
+       }
+
+       function delet(inp){
+           
+
+      var table=document.getElementById("tableItems");
+      var ch1=table.getElementsByTagName("input");
+      
+      for(var i=0;i<ch1.length;i++ ){
+               if(ch1[i].checked==true){
+              var r=ch1[i].parentNode.parentNode;
+              
+              table.removeChild(r);}}
+       }
+    
+       function all1(x){
+           
+      
+           var table=document.getElementById("tableItems");
+      var ch1=table.getElementsByTagName("input");
+      
+      for(var i=0;i<ch1.length;i++ ){
+          if(x.checked==true){
+        ch1[i].checked=true;
+    }
+    else
+    {
+        ch1[i].checked=false;
+    }
+               }
+       }
+
+       function showdis(n){
+       document.getElementById("DiscountPart").style.display="block";
+         }
+
+       function dis(l){
+        
+  
+     var w=document.getElementById("txtDiscount").value;
+     var spl=w.split(" ");
+
+     if (spl[0]=="EL"){
+         debugger
+       var tab=document.getElementById("tableItems");
+       var tr0=tab.getElementsByClassName("EL");
+       var tdv=tr0[0].lastChild.innerText;
+       var prc=tdv.split(" ");
+       
+       var fun=prc[0]-(prc[0]*(spl[1]/100));
+       tr0[0].lastChild.innerText=fun + " " + "JD";
+     }
+else{
+    var tab=document.getElementById("tableItems");
+       var tr0=tab.getElementsByClassName("PR");
+       var tdv=tr0[0].lastChild.innerText;
+       var prc=tdv.split(" ");
+       
+       var fun=prc[0]-(prc[0]*(spl[1]/100));
+       tr0[0].lastChild.innerText=fun + " " + "JD";
+}
+    
+    
+   
+       }
+    
+
+
+    </script>
+
+    </head>
+    <body >
+        
+        <div class="header">
+    
+            <div class="logo float-left">
+                <img src="Images/Header/SmallLogo.png" />
+            </div>
+            <div style="float: left; margin-left: 1120px; margin-top: 25px; font-weight: bold;">
+                <span id="username">Hello</span>
+                <img src="Images/Icons/logout.png" style="margin-left:5px;cursor:pointer" />
+            </div>
+            <div class="account float-right">
+                <div class="accountSettings">
+                    <div class="ImageCircle">
+                        <img src="Images/Header/ProfilePict.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        <div id="DivShoppingList" class="showBox" style=" position: absolute; height: 130%; border-right: 2px solid white; background: #333333; width: 270px;display: none;">
+            <div style="width: 206px;text-align: center;padding-top: 15px;float: left;">
+                <span style="font-size: 20px; font-weight: bold; font-family: sans-serif; color: white; ">
+                    <input type="checkbox" onclick="all1(this)"> Shopping List
+                </span>
+            </div>
+            <div style="float: left;margin-top: 10px;">
+                <img src="Images/Icons/delete.png" width="30" id="imgDelete"  onclick="delet(this)">
+            </div>
+            <div id="divItemList" style="height: 500px; padding-left: 15px; padding-right: 15px; color: white; margin-top: 10px; padding-left: 15px;" >
+                <table id="tableItems" style="padding-left:10px;"></table>
+            </div>
+            <div style="padding-left: 15px;">
+                <div style=" margin-left: 3px; color: white; margin-bottom: 10px;">
+                    <input type="checkbox" id="chkDiscount" onclick="showdis(this)" /> You Have Discount?
+                </div>
+                <div id="DiscountPart" style="display:none;">
+                    <div>
+                        <input type="text" id="txtDiscount" placeholder="Discount Code" style="width: 205px;padding-left: 10px;" />
+                    </div>
+                    <div style="margin-top:10px;color:white;">
+                        <input type="button" class="mybutton" value="Buy" style="width:85%" onclick="dis(this)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        <div id="HeaderBoxes">
+            <div class="HeaderBoxImage">
+                <img src="Images/Header/Box1.png" />
+            </div>
+            <div class="HeaderBox">
+                <div style="position: absolute; margin-left: 240px;">
+                    <img src="Images/Header/Box2.png" />
+                </div>
+                <div id="HeaderTitle" style="float:left">
+                    <span class="title" style="color: #D30294;">
+                        Dare
+                    </span>
+                    <span class="title">
+                        Academy
+                    </span>
+                </div>
+                <div id="CallUs">
+                    <span style="font-weight:bold" class="contact">
+                        CALL US
+                    </span>
+                    <span style="color: #D30294; margin-left: 7px; font-weight: bold;" class="contact">
+                        06 516 2571
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+       
+        
+        <div class="HeaderMenu">
+            <ul>
+                <li class="liClick">
+                    <a href="#" style="color:white">Home</a>
+                </li>
+                <li><a href="#">Top Sales</a></li>
+                <li><a href="#">Week Offers</a></li>
+                <li>
+                    <a href="#">Shop By Category</a>
+                    <ul style="display:none;">
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">Electronics</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Contact Us</a>
+                </li>
+                <li>
+                    <a href="#">New Items</a>
+                </li>
+            </ul>
+        </div>
+    
+      
+        
+        
+        
+        
+        
+        
+        <div class="SellingArea">--------------
+            <div class="Item" id="ItemNumber">
+                <span class="Electronic"></span>
+                <div class="xyz" style="display: none;">EL</div>
+                <img src="Images/Items/Camera_Elec.png" width="130" class="mainimgItem" />
+                <div class="ItemSpec">
+                    <span class="headerItem">Camera Nikon</span>
+                    
+                    <span class="itemDetails">
+                        Nikon D850 DSLR Camera with AF-S NIKKOR 24-120mm...
+                    </span>
+                   
+    
+                    <div class="PriceSection">
+                        <div style=" padding-top: 5px; float: left;">
+                            <span class="headerpriceItem">300 JD</span>
+                        </div>
+                        <div style="float:left;margin-left:10px">
+                            <img src="C:\Users\User\Downloads\AddtoCart.png" width="30" class="imgAdd" onclick="addshop(this)" />
+                        </div>
+                    </div>
+                  
+                </div>
+                <div>
+                    <img src="Images/Menu/hiddenShadow.png" width="260" />
+                </div>
+            </div>
+    
+    
+    
+            <div class="Item" id="per">
+                <span class="Perfume"></span>
+                <img src="Images/Items/Perfume_Fashion.png" width="90" class="mainimgItem" style="margin-left:55px;" />
+                <div class="ItemSpec">
+                    <div style="position:absolute">
+                        <div class="xyz" style="display: none;">PR</div>
+                        <img src="Images/Menu/hiddenBox.png" width="270" />
+                    </div>
+                    <span class="headerItem">Perfume Fashion</span>
+                   
+                    <span class="itemDetails">Luxury Perfume Fashion for women...</span>
+                    <div class="PriceSection">
+                        <div style=" padding-top: 5px; float: left;">
+                            <span class="headerpriceItem">90 JD</span>
+                        </div>
+                        <div style="float:left;margin-left:10px">
+
+                            <img src="C:\Users\User\Downloads\AddtoCart.png" width="30" class="imgAdd" onclick="addshop(this)" />
+                        </div>
+                    </div>
+                  
+                </div>
+                <div>
+                    <img src="Images/Menu/hiddenShadow.png" width="260" />
+                </div>
+            </div>
+    
+    
+            <div class="Item" id="elec">
+                <span class="Electronic"></span>
+                <img src="Images/Items/TV.png" width="140" class="mainimgItem" />
+                <div class="ItemSpec">
+                    <div style="position:absolute">
+                        <div class="xyz" style="display: none;">EL</div>
+                        <img src="Images/Menu/hiddenBox.png" width="217" />
+                    </div>
+                    <span class="headerItem">Samsung TV</span>
+                   
+                    <div class="itemDetails">
+                        <span>
+                            Samsung TV LED Curved
+                        </span>
+                    </div>
+                    <div class="PriceSection">
+                        <div style=" padding-top: 5px; float: left;">
+                            <span class="headerpriceItem">500 JD</span>
+                        </div>
+                        <div style="float:left;margin-left:10px">
+                            <img src="C:\Users\User\Downloads\AddtoCart.png" width="30" class="imgAdd"  onclick="addshop(this)" />
+                        </div>
+                    </div>
+                    
+    
+                </div>
+                <div>
+                    <img src="Images/Menu/hiddenShadow.png" width="260" />
+                </div>
+            </div>
+    
+    
+            <div class="Item" id="elec1">
+                <span class="Perfume"></span>
+                <img src="Images/Items/Adidas_Perfume.png" width="180" height="120" class="mainimgItem"/>
+                <div class="ItemSpec">
+                    <div style="position:absolute">
+                        <div class="xyz" style="display: none;">PR</div>
+                        <img src="Images/Menu/hiddenBox.png" width="217" />
+                    </div>
+                    <span class="headerItem">Adidas Perfume</span>
+                   
+                    <div class="itemDetails">
+                        <span>
+                            Adidas Perfume
+                        </span>
+                    </div>
+                    <div class="PriceSection">
+                        <div style=" padding-top: 5px; float: left;">
+                            <span class="headerpriceItem">70 JD</span>
+                        </div>
+                        <div style="float:left;margin-left:10px">
+                            
+                            <img src="C:\Users\User\Downloads\AddtoCart.png" width="30" class="imgAdd" onclick="addshop(this)" />
+                        </div>
+                    </div>
+                    
+    
+                </div>
+                <div>
+                    <img src="Images/Menu/hiddenShadow.png" width="260" />
+                </div>
+            </div>
+    
+    
+            <div class="Item" id="elec2">
+                <span class="Electronic"></span>
+                <img src="Images/Items/PS4_Elec.png" width="210" class="mainimgItem" />
+                <div class="ItemSpec">
+                    <div style="position:absolute">
+                        <div class="xyz" style="display: none;">EL</div>
+                        <img src="Images/Menu/hiddenBox.png" width="217" />
+                    </div>
+                    <span class="headerItem">PS4</span>
+                    
+                    <div class="itemDetails">
+                        <span>
+                            PlayStation PS4 1TB
+                        </span>
+                    </div>
+                    <div class="PriceSection">
+                        <div style=" padding-top: 5px; float: left;">
+                            <span class="headerpriceItem">120 JD</span>
+                        </div>
+                        <div style="float:left;margin-left:10px">
+                            <img src="C:\Users\User\Downloads\AddtoCart.png" width="30" class="imgAdd" onclick="addshop(this)" />
+                        </div>
+                    </div>
+                   
+                </div>
+                <div>
+                    <img src="Images/Menu/hiddenShadow.png" width="260" />
+                </div>
+            </div>
+        </div>
+    
+    </body>
+</html>
